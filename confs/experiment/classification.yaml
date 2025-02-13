@@ -4,22 +4,22 @@ experiment_name: ${db.name}_${model.name}_${preprocessing.imputer.method} # DO N
 pipeline: simple # DO NOT REMOVE
 
 seed: 42 # Seed for randomness control
-verbose: 1 # 0 or 1, verbosity of the training
+verbose: 0 # 0 or 1, verbosity of the training
 
-continue_experiment: False # True or False, if the experiment should be continued from where it was interrupted
+continue_experiment: True # True or False, if the experiment should be continued from where it was interrupted
 
 defaults: # DO NOT CHANGE
   - _self_ # DO NOT CHANGE
   - paths@: default # DO NOT CHANGE
   - paths: experiment_paths # DO NOT CHANGE
 
-  - databases@db: adult # Name of the configuration file of the dataset
+  - databases@db: acs_naim # Name of the configuration file of the dataset
 
   - cross_validation@test_cv: stratifiedkfold  # Cross-validation strategy for the test set
-  - cross_validation@val_cv: holdout           # Cross-validation strategy for the validation set
+  - cross_validation@val_cv: stratifiedkfold   # Cross-validation strategy for the validation set
 
-  - preprocessing/numerical: normalize # normalize or standardize
-  - preprocessing/categorical: categorical_encode # categorical_encode or one_hot_encode
+  - preprocessing/numerical: standardize # normalize or standardize
+  # - preprocessing/categorical: one_hot_encode # categorical_encode or one_hot_encode
   - preprocessing/imputer: no_imputation # simple or knn or iterative or no_imputation
 
   - model_type_params@dl_params: dl_params # DO NOT CHANGE
@@ -36,7 +36,7 @@ defaults: # DO NOT CHANGE
   - optimizer@train.optimizer: adam               # DO NOT CHANGE
   - train_utils@train.manager: train_manager      # DO NOT CHANGE
 
-  - metric@train.set_metrics.auc: auc # Metric to use for the early stopping
+  - metric@train.set_metrics.auc: accuracy # Metric to use for the early stopping
 
   - metric@performance_metrics.auc: auc # Metric to use for the performance evaluation
   - metric@performance_metrics.accuracy: accuracy # Metric to use for the performance evaluation

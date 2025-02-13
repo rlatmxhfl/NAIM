@@ -1,0 +1,60 @@
+_target_: CMC_utils.datasets.ClassificationDataset # DO NOT CHANGE
+_convert_: all # DO NOT CHANGE
+
+name: acs_naim # Name of the dataset
+db_type: tabular # DO NOT CHANGE
+classes: ["SURG","PTCA","MANAG"] # List of the classes
+label_type: multiclass # multiclass or binary
+
+task: classification # DO NOT CHANGE
+
+path: ${data_path}/acs_naim_float.csv # Relative path to the file
+
+columns: # Dictionary containing features names as keys and their types as values # DO NOT REMOVE
+  DEMOGRAPHICS_Age at event: float
+  DEMOGRAPHICS_Gender: category
+  DEMOGRAPHICS_BMI: float
+  EVENT INFORMATION_Diagnosis: category
+  RISK FACTORS AND COMORBID CONDITIONS_DM: category
+  RISK FACTORS AND COMORBID CONDITIONS_Diabetes Type: category
+  RISK FACTORS AND COMORBID CONDITIONS_Hypertension: category
+  RISK FACTORS AND COMORBID CONDITIONS_Hyperlipidemia: category
+  RISK FACTORS AND COMORBID CONDITIONS_Smoking: category
+  RISK FACTORS AND COMORBID CONDITIONS_Peripheral Vascular: category
+  RISK FACTORS AND COMORBID CONDITIONS_Cerebrovascular: category
+  RISK FACTORS AND COMORBID CONDITIONS_Pulmonary Disease: category
+  RISK FACTORS AND COMORBID CONDITIONS_Malignancy: category
+  RISK FACTORS AND COMORBID CONDITIONS_CHF: category
+  RISK FACTORS AND COMORBID CONDITIONS_prior_infarction: category
+  ANGIOGRAPHIC DATA_CAD: category
+  ECHO DATA_Time Since Event Date: float
+  ECHO DATA_EF: float
+  ECHO DATA_EF Category: category
+  ECHO DATA_Api Ant: category
+  ECHO DATA_Api Inf: category
+  ECHO DATA_Api Lat: category
+  ECHO DATA_Api Sept: category
+  ECHO DATA_Basal ant: category
+  ECHO DATA_Basal Anterolat: category
+  ECHO DATA_Basal Inferolat: category
+  ECHO DATA_Basal Inf: category
+  ECHO DATA_Basal Inferosept: category
+  ECHO DATA_Basal Anterosept: category
+  ECHO DATA_Mid Ant: category
+  ECHO DATA_Mid Anterolat: category
+  ECHO DATA_Mid Inferolat: category
+  ECHO DATA_Mid Inf: category
+  ECHO DATA_Mid Inferosept: category
+  ECHO DATA_Mid Anterosept: category
+
+  # Other features to be inserted
+  ANGIOGRAPHIC DATA_Recom Therapy: target  # DO NOT CHANGE THE VALUE, NAME CORRECTLY THE TARGET VARIABLE
+
+pandas_load_kwargs:
+  header: 0
+
+dataset_class: # DO NOT CHANGE
+  _target_: CMC_utils.datasets.SupervisedTabularDatasetTorch # DO NOT CHANGE
+  _convert_: all # DO NOT CHANGE
+
+# nan_as_category: True

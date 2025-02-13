@@ -1,6 +1,10 @@
 import sys
 sys.path.append("CMC_utils")
 
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "2"
+os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
+
 import hydra
 import logging
 from omegaconf import DictConfig

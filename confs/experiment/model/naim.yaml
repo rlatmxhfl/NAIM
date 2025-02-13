@@ -25,7 +25,8 @@ init_params:
 
   cat_dims:
 
-  d_token: 6
+  d_token: 256
+  # 6
 
   embedder_initialization: normal
 
@@ -35,17 +36,22 @@ init_params:
 
   missing_value: ~inf
 
-  num_heads: 3
+  num_heads: 8
+  # 3
 
-  feedforward_dim: 1000
+  feedforward_dim: 256
+  # 1000
 
   dropout_rate: 0.0
 
-  activation: relu
+  activation: gelu
+  # relu
 
-  num_layers: 6
+  num_layers: 4
+  # 6
 
-  extractor: False
+  extractor: 
+  # False
 
 fit_params: {}
 
